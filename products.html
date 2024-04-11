@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>productos</title>
+</head>
+<body>
+    <table class="list">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>descripcion</th>
+                <th>precio</th>
+                <th>categoria</th>
+                <th>fecha de creacion</th>
+                <th>creado por</th>
+                <th>fecha de actualizacion</th>
+                <th>actualizado por</th>
+                <th>fecha de eliminacion</th>
+                <th>eliminado por</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <a href="index.html">inicio</a>
+    <script>
+                fetch('http://localhost:3000/api/Product/')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector(".list tbody")
+
+                data.forEach(product => {
+
+                    const row = document.createElement('tr')
+                    const IdProduct = document.createElement('td')
+                    IdProduct.textContent = product.IdProducto
+                    console.log("ID del producto:", product.IdProducto);
+                    const descripcion = document.createElement('td')
+                    descripcion.textContent = product.descripcion
+                    console.log("descripcion:", product.descripcion);                 
+                    const precio = document.createElement('td')
+                    precio.textContent = product.precio                   
+                    const fk_categoria = document.createElement('td')
+                    fk_categoria.textContent = product.fk_categoria                   
+                    const fechaCreacion = document.createElement('td')
+                    fechaCreacion.textContent = product.fechaCreacion                   
+                    const fk_creadoPor = document.createElement('td')
+                    fk_creadoPor.textContent = product.fk_creadoPor                   
+                    const fechaActualizacion = document.createElement('td')
+                    fechaActualizacion.textContent = product.fechaActualizacion                   
+                    const fk_actualizadoPor = document.createElement('td')
+                    fk_actualizadoPor.textContent = product.fk_actualizadoPor                   
+                    const fechaEliminacion = document.createElement('td')
+                    fechaEliminacion.textContent = product.fechaEliminacion                   
+                    const fk_eliminadoPor = document.createElement('td')
+                    fk_eliminadoPor.textContent = product.fk_eliminadoPor                   
+
+                    row.appendChild(IdProduct)
+                    row.appendChild(descripcion)
+                    row.appendChild(precio)
+                    row.appendChild(fk_categoria)
+                    row.appendChild(fechaCreacion)
+                    row.appendChild(fk_creadoPor)
+                    row.appendChild(fechaActualizacion)
+                    row.appendChild(fk_actualizadoPor)
+                    row.appendChild(fechaEliminacion)
+                    row.appendChild(fk_eliminadoPor)
+
+                    tableBody.appendChild(row)
+                });
+
+            })
+            
+    </script>
+</body>
+</html>

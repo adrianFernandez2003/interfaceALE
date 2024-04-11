@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hola</h1>
+
+    <table class="list">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>fecha de creacion</th>
+                <th>fecha de actualizacion</th>
+                <th>fecha de eliminacion</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <a href="index.html">inicio</a>
+
+    <script>
+        fetch('http://localhost:3000/api/user/')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector(".list tbody")
+
+                data.forEach(user => {
+                    const row = document.createElement('tr')
+                    const IdUsuario = document.createElement('td')
+                    IdUsuario.textContent = user.IdUsuario
+                    const nombre = document.createElement('td')
+                    nombre.textContent = user.nombre                   
+                    const fechaCreacion = document.createElement('td')
+                    fechaCreacion.textContent = user.fechaCreacion                   
+                    const fechaActualizacion = document.createElement('td')
+                    fechaActualizacion.textContent = user.fechaActualizacion                   
+                    const fechaEliminacion = document.createElement('td')
+                    fechaEliminacion.textContent = user.fechaEliminacion                   
+
+                    row.appendChild(IdUsuario)
+                    row.appendChild(nombre)
+                    row.appendChild(fechaCreacion)
+                    row.appendChild(fechaActualizacion)
+                    row.appendChild(fechaEliminacion)
+
+                    tableBody.appendChild(row)
+                });
+
+            })
+    
+
+
+    </script>
+</body>
+</html>
