@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>sesion de productos</h1>
+
+    <table class="list">
+        <thead>
+            <tr>
+                <th>sesion</th>
+                <th>producto</th>
+                <th>cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <a href="index.html">inicio</a>
+
+    <script>
+        fetch('http://localhost:3000/api/ProductSession/')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector(".list tbody")
+
+                data.forEach(productSession => {
+                    const row = document.createElement('tr')
+                    const fk_sesion = document.createElement('td')
+                    fk_sesion.textContent = productSession.fk_sesion
+                    const fk_producto = document.createElement('td')
+                    fk_producto.textContent = productSession.fk_producto                   
+                    const cantidad = document.createElement('td')
+                    cantidad.textContent = productSession.cantidad                               
+
+                    row.appendChild(fk_sesion)
+                    row.appendChild(fk_producto)
+                    row.appendChild(cantidad)
+
+                    tableBody.appendChild(row)
+                });
+
+            })
+    
+
+
+    </script>
+</body>
+</html>

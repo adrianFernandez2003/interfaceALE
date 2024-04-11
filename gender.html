@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generoos</title>
+</head>
+<body>
+    <h1>generos</h1>
+    <table class="list">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>genero</th>
+                <th>fecha de creacion</th>
+                <th>creado por</th>
+                <th>fecha de actualizacion</th>
+                <th>actualizado por</th>
+                <th>fecha de eliminacion</th>
+                <th>eliminado por</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <a href="index.html">inicio</a>
+    <script>
+                fetch('http://localhost:3000/api/gender/')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector(".list tbody")
+
+                data.forEach(generos => {
+
+                    const row = document.createElement('tr')
+                    const IdGenero = document.createElement('td')
+                    IdGenero.textContent = generos.IdGenero
+                    const genero = document.createElement('td')
+                    genero.textContent = generos.genero                      
+                    const fechaCreacion = document.createElement('td')
+                    fechaCreacion.textContent = generos.fechaCreacion                   
+                    const fk_creadoPor = document.createElement('td')
+                    fk_creadoPor.textContent = generos.fk_creadoPor                   
+                    const fechaActualizacion = document.createElement('td')
+                    fechaActualizacion.textContent = generos.fechaActualizacion                   
+                    const fk_actualizadoPor = document.createElement('td')
+                    fk_actualizadoPor.textContent = generos.fk_actualizadoPor                   
+                    const fechaEliminacion = document.createElement('td')
+                    fechaEliminacion.textContent = generos.fechaEliminacion                   
+                    const fk_eliminadoPor = document.createElement('td')
+                    fk_eliminadoPor.textContent = generos.fk_eliminadoPor                   
+
+                    row.appendChild(IdGenero)
+                    row.appendChild(genero)
+                    row.appendChild(fechaCreacion)
+                    row.appendChild(fk_creadoPor)
+                    row.appendChild(fechaActualizacion)
+                    row.appendChild(fk_actualizadoPor)
+                    row.appendChild(fechaEliminacion)
+                    row.appendChild(fk_eliminadoPor)
+
+                    tableBody.appendChild(row)
+                });
+
+            })
+            
+    </script>
+</body>
+</html>

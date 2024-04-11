@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adressos</title>
+</head>
+<body>
+    <h1>direcciones</h1>
+    <table class="list">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>codigo postal</th>
+                <th>calle</th>
+                <th>colonia</th>
+                <th>numExt</th>
+                <th>numInt</th>
+                <th>ciudad</th>
+                <th>fecha de creacion</th>
+                <th>creado por</th>
+                <th>fecha de actualizacion</th>
+                <th>actualizado por</th>
+                <th>fecha de eliminacion</th>
+                <th>eliminado por</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <a href="index.html">inicio</a>
+    <script>
+                fetch('http://localhost:3000/api/Adress/')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector(".list tbody")
+
+                data.forEach(adress => {
+
+                    const row = document.createElement('tr')
+                    const idDireccion = document.createElement('td')
+                    idDireccion.textContent = adress.IdDireccion
+                    const codigoPostal = document.createElement('td')
+                    codigoPostal.textContent = adress.codigoPostal
+                    const calle = document.createElement('td')
+                    calle.textContent = adress.calle                   
+                    const colonia = document.createElement('td')
+                    colonia.textContent = adress.colonia                   
+                    const numExt = document.createElement('td')
+                    numExt.textContent = adress.numExt                   
+                    const numInt = document.createElement('td')
+                    numInt.textContent = adress.numInt                   
+                    const ciudad = document.createElement('td')
+                    ciudad.textContent = adress.ciudad                   
+                    const fechaCreacion = document.createElement('td')
+                    fechaCreacion.textContent = adress.fechaCreacion                   
+                    const fk_creadoPor = document.createElement('td')
+                    fk_creadoPor.textContent = adress.fk_creadoPor                   
+                    const fechaActualizacion = document.createElement('td')
+                    fechaActualizacion.textContent = adress.fechaActualizacion                   
+                    const fk_actualizadoPor = document.createElement('td')
+                    fk_actualizadoPor.textContent = adress.fk_actualizadoPor                   
+                    const fechaEliminacion = document.createElement('td')
+                    fechaEliminacion.textContent = adress.fechaEliminacion                   
+                    const fk_eliminadoPor = document.createElement('td')
+                    fk_eliminadoPor.textContent = adress.fk_eliminadoPor                   
+
+                    row.appendChild(idDireccion)
+                    row.appendChild(codigoPostal)
+                    row.appendChild(calle)
+                    row.appendChild(colonia)
+                    row.appendChild(numExt)
+                    row.appendChild(numInt)
+                    row.appendChild(ciudad)
+                    row.appendChild(fechaCreacion)
+                    row.appendChild(fk_creadoPor)
+                    row.appendChild(fechaActualizacion)
+                    row.appendChild(fk_actualizadoPor)
+                    row.appendChild(fechaEliminacion)
+                    row.appendChild(fk_eliminadoPor)
+
+                    tableBody.appendChild(row)
+                });
+
+            })
+            
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>customers</title>
+</head>
+<body>
+    <h1>clientes</h1>
+    <table class="list">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>fecha de nacimiento</th>
+                <th>genero</th>
+                <th>telefono</th>
+                <th>correo</th>
+                <th>direccion</th>
+                <th>fecha de creacion</th>
+                <th>creado por</th>
+                <th>fecha de actualizacion</th>
+                <th>actualizado por</th>
+                <th>fecha de eliminacion</th>
+                <th>eliminado por</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <a href="index.html">inicio</a>
+    <script>
+                fetch('http://localhost:3000/api/Customer/')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector(".list tbody")
+
+                data.forEach(customers => {
+
+                    const row = document.createElement('tr')
+                    const idCliente = document.createElement('td')
+                    idCliente.textContent = customers.IdClientes
+                    console.log("ID del cliente:", customers.IdClientes);
+                    const nombre = document.createElement('td')
+                    nombre.textContent = customers.nombre
+                    const apellido = document.createElement('td')
+                    apellido.textContent = customers.apellido                   
+                    const fechaNac = document.createElement('td')
+                    fechaNac.textContent = customers.fechaNac                   
+                    const fk_genero = document.createElement('td')
+                    fk_genero.textContent = customers.fk_genero                   
+                    const telefono = document.createElement('td')
+                    telefono.textContent = customers.telefono                   
+                    const correo = document.createElement('td')
+                    correo.textContent = customers.correo                   
+                    const fk_direccion = document.createElement('td')
+                    fk_direccion.textContent = customers.fk_direccion                   
+                    const fechaCreacion = document.createElement('td')
+                    fechaCreacion.textContent = customers.fechaCreacion                   
+                    const fk_creadoPor = document.createElement('td')
+                    fk_creadoPor.textContent = customers.fk_creadoPor                   
+                    const fechaActualizacion = document.createElement('td')
+                    fechaActualizacion.textContent = customers.fechaActualizacion                   
+                    const fk_actualizadoPor = document.createElement('td')
+                    fk_actualizadoPor.textContent = customers.fk_actualizadoPor                   
+                    const fechaEliminacion = document.createElement('td')
+                    fechaEliminacion.textContent = customers.fechaEliminacion                   
+                    const fk_eliminadoPor = document.createElement('td')
+                    fk_eliminadoPor.textContent = customers.fk_eliminadoPor                   
+
+                    row.appendChild(idCliente)
+                    row.appendChild(nombre)
+                    row.appendChild(apellido)
+                    row.appendChild(fechaNac)
+                    row.appendChild(fk_genero)
+                    row.appendChild(telefono)
+                    row.appendChild(correo)
+                    row.appendChild(fk_direccion)
+                    row.appendChild(fechaCreacion)
+                    row.appendChild(fk_creadoPor)
+                    row.appendChild(fechaActualizacion)
+                    row.appendChild(fk_actualizadoPor)
+                    row.appendChild(fechaEliminacion)
+                    row.appendChild(fk_eliminadoPor)
+
+                    tableBody.appendChild(row)
+                });
+
+            })
+            
+    </script>
+</body>
+</html>
